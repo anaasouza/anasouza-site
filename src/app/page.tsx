@@ -45,8 +45,8 @@ const LandingPage = () => {
         </div>
 
         {/* Header */}
-        <div className="text-center mb-12 relative pt-2">
-          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 -translate-y-full">
+        <div className="text-center mb-12">
+        <div className="inline-block p-2 rounded-full bg-indigo-500/10 mb-4">
             <Cpu className="w-12 h-12 text-indigo-400 animate-pulse" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
