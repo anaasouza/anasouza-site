@@ -1,101 +1,128 @@
-import Image from "next/image";
+"use client"
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { FileText, Linkedin, Globe, Users, Languages, Code, Cpu } from 'lucide-react';
+import { translations } from '../translations';
 
-export default function Home() {
+// [Previous translations object remains the same]
+
+const LandingPage = () => {
+  const [language, setLanguage] = useState('pt');
+  const t = translations[language];
+
+  const icons = {
+    cv: <Code className="w-8 h-8 text-indigo-500" />,
+    premium: <Globe className="w-8 h-8 text-indigo-500" />,
+    linkedin: <Linkedin className="w-8 h-8 text-indigo-500" />,
+    expat: <Users className="w-8 h-8 text-indigo-500" />
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 py-12 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Language Selector */}
+        <div className="flex justify-end mb-4">
+          <div className="flex items-center space-x-2 bg-gray-800/50 rounded-lg p-2">
+            <Languages className="w-5 h-5 text-indigo-400" />
+            <select 
+              value={language} 
+              onChange={(e) => setLanguage(e.target.value)}
+              className="bg-transparent text-white border border-indigo-500/30 rounded-md p-1 text-sm focus:ring-2 focus:ring-indigo-500"
+              style={{
+                color: 'white',  // Força a cor do texto
+                backgroundColor: '#1f2937', // Fundo escuro para o dropdown
+                option: {
+                  backgroundColor: '#1f2937', // Fundo escuro para as opções
+                  color: 'white' // Texto branco para as opções
+                }
+              }}
+            >
+              <option value="pt" style={{color: 'black', backgroundColor: 'white'}}>Português</option>
+              <option value="en" style={{color: 'black', backgroundColor: 'white'}}>English</option>
+              <option value="fr" style={{color: 'black', backgroundColor: 'white'}}>Français</option>
+            </select>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Header */}
+        <div className="text-center mb-12 relative pt-2">
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 -translate-y-full">
+            <Cpu className="w-12 h-12 text-indigo-400 animate-pulse" />
+          </div>
+          <h1 className="text-4xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+            {t.name}
+          </h1>
+          <h2 className="text-3xl font-bold text-white mb-4">
+            {t.title}
+          </h2>
+          <p className="text-xl text-indigo-200">
+            {t.subtitle}
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {t.services.map((service, index) => (
+            <Card key={index} className="bg-gray-800/50 backdrop-blur-lg border border-indigo-500/20 shadow-lg hover:shadow-indigo-500/10 hover:scale-105 transition-all duration-300">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-xl font-bold text-white">{service.title}</CardTitle>
+                  {Object.values(icons)[index]}
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-indigo-200 mb-4">{service.description}</p>
+                <p className="text-lg font-semibold text-indigo-400">{service.price}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Why Choose Us */}
+        <div className="mt-12 text-center">
+          <div className="bg-gray-800/50 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              {t.whyChooseUs}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {t.benefits.map((benefit, index) => (
+                <div key={index} className="p-4 rounded-lg bg-gray-900/50 hover:bg-gray-700/50 transition-colors">
+                  <h3 className="font-semibold text-lg mb-2 text-indigo-400">{benefit.title}</h3>
+                  <p className="text-indigo-200">{benefit.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="mt-12 text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">{t.contact}</h2>
+          <p className="text-indigo-200 mb-6">
+            {t.contactText}
+          </p>
+          <div className="flex justify-center space-x-8">
+            <a 
+              href="mailto:contato.anasouza@gmail.com" 
+              className="flex items-center text-indigo-400 hover:text-indigo-300 transition-colors bg-gray-800/50 rounded-lg px-4 py-2 hover:bg-gray-700/50"
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              contato.anasouza@gmail.com
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/souza-anac/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center text-indigo-400 hover:text-indigo-300 transition-colors bg-gray-800/50 rounded-lg px-4 py-2 hover:bg-gray-700/50"
+            >
+              <Linkedin className="w-5 h-5 mr-2" />
+              {t.linkedinProfile}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default LandingPage;
