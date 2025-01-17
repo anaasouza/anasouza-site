@@ -4,11 +4,12 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { FileText, Linkedin, Globe, Users, Languages, Code, Cpu } from 'lucide-react';
 import { translations } from '../translations';
 
-// [Previous translations object remains the same]
+// Type definitions
+type Language = 'pt' | 'en' | 'fr';
 
 const LandingPage = () => {
-  const [language, setLanguage] = useState('pt');
-  const t = translations[language];
+  const [language, setLanguage] = useState<Language>('pt');
+  const t = translations[language as keyof typeof translations];
 
   const icons = {
     cv: <Code className="w-8 h-8 text-indigo-500" />,
@@ -26,20 +27,16 @@ const LandingPage = () => {
             <Languages className="w-5 h-5 text-indigo-400" />
             <select 
               value={language} 
-              onChange={(e) => setLanguage(e.target.value)}
+              onChange={(e) => setLanguage(e.target.value as Language)}
               className="bg-transparent text-white border border-indigo-500/30 rounded-md p-1 text-sm focus:ring-2 focus:ring-indigo-500"
               style={{
                 color: 'white',  // Força a cor do texto
-                backgroundColor: '#1f2937', // Fundo escuro para o dropdown
-                option: {
-                  backgroundColor: '#1f2937', // Fundo escuro para as opções
-                  color: 'white' // Texto branco para as opções
-                }
+                backgroundColor: '#1f2937', // Fundo escuro para o dropdown                
               }}
             >
-              <option value="pt" style={{color: 'black', backgroundColor: 'white'}}>Português</option>
-              <option value="en" style={{color: 'black', backgroundColor: 'white'}}>English</option>
-              <option value="fr" style={{color: 'black', backgroundColor: 'white'}}>Français</option>
+              <option value="pt" style={{backgroundColor: 'white', color: 'black'}}>Português</option>
+              <option value="en" style={{backgroundColor: 'white', color: 'black'}}>English</option>
+              <option value="fr" style={{backgroundColor: 'white', color: 'black'}}>Français</option>
             </select>
           </div>
         </div>

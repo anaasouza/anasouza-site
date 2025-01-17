@@ -1,3 +1,28 @@
+// Definições de tipo
+interface Service {
+  title: string;
+  description: string;
+  price: string;
+}
+
+interface Benefit {
+  title: string;
+  description: string;
+}
+
+export interface Translation {
+  name: string;
+  title: string;
+  subtitle: string;
+  services: Service[];
+  whyChooseUs: string;
+  benefits: Benefit[];
+  contact: string;
+  contactText: string;
+  linkedinProfile: string;
+}
+
+// Objeto de traduções
 export const translations = {
     pt: {
       name: "Ana Souza",

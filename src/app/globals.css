@@ -19,3 +19,13 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+select {
+  color: white;
+  background-color: #1f2937;
+}
+
+select option {
+  color: black;
+  background-color: white;
+}
