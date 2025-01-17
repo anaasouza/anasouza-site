@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { FileText, Linkedin, Globe, Users, Languages, Code, Cpu } from 'lucide-react';
 import { translations } from '../translations';
+import { Analytics } from "@vercel/analytics/react";
 
 // Type definitions
 type Language = 'pt' | 'en' | 'fr';
@@ -19,6 +20,8 @@ const LandingPage = () => {
   };
 
   return (
+    <div>
+      <Analytics />
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Language Selector */}
@@ -38,6 +41,7 @@ const LandingPage = () => {
               <option value="en" style={{backgroundColor: 'white', color: 'black'}}>English</option>
               <option value="fr" style={{backgroundColor: 'white', color: 'black'}}>Français</option>
             </select>
+            </div> 
           </div>
         </div>
 
